@@ -81,7 +81,6 @@ def callback_message(callback):
         main(callback.message)
 
     elif callback.data == 'states':
-        file_eu = open('./eu.png', 'rb')
         bot.send_message(callback.message.chat.id, 'Действие полиса распространяется на все страны <b>Евросоюза</b>,'
                          ' а так же на <b>Швейцарию</b>', parse_mode='HTML')
         bot.send_photo(callback.message.chat.id, file_eu)
