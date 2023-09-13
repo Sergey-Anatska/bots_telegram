@@ -14,7 +14,7 @@ btn_moto = types.InlineKeyboardButton('Мотоцикл', callback_data='moto')
 btn_bus = types.InlineKeyboardButton('Автобус', callback_data='bus')
 btn_trailer = types.InlineKeyboardButton('Прицеп к легковому авто', callback_data='trailer')
 btn_crm_form = types.InlineKeyboardButton('ОФОРМИТЬ ПОЛИС',
-                                          web_app=WebAppInfo(url='https://b24-u594l7.bitrix24.site/crm_form_wx0h6/'))
+                                          web_app=WebAppInfo(url='https://b24-u594l7.bitrix24.site/crm_form_f7oxx/'))
 btn_manager = types.InlineKeyboardButton('Соеденить с оператором', url='https://t.me/GreenCardAgency_bot')
 btn_main_menu = types.InlineKeyboardButton('Главное меню', callback_data='main_menu')
 btn_pay_when = types.InlineKeyboardButton('Когда платить', callback_data='pay_when')
