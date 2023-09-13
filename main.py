@@ -1,26 +1,9 @@
 import telebot
 from telebot import types
 from telebot.types import WebAppInfo
-from flask import Flask, request
-import git
-
-app = Flask(__name__)
-
-@app.route('/update_server', methods=['POST'])
-def webhook():
-    if request.method == 'POST':
-        repo = git.Repo('path/to/git_repo')
-        origin = repo.remotes.origin
-
-        origin.pull()
-
-        return 'Updated PythonAnywhere successfully', 200
-    else:
-        return 'Wrong event type', 400
 
 
-
-bot = telebot.TeleBot("6582505003:AAEPiQLC_5hQumIYDwlgErrzjfluPuoYm2s")
+bot = telebot.TeleBot("6582505003:AAFHjvJKzyN1ZRnHiXeGZnAhE5mMcQ2cnhc")
 
 btn_costs = types.InlineKeyboardButton('Узнать цены', callback_data='costs')
 btn_states = types.InlineKeyboardButton('Где действует полис?', callback_data='states')
@@ -53,8 +36,6 @@ def hiHere(message):
     main(message)
 
 
-
-
 @bot.callback_query_handler(func=lambda callback: True)
 def callback_message(callback):
 
@@ -66,7 +47,7 @@ def callback_message(callback):
         bot.send_message(callback.message.chat.id, 'Минимальный срок страхования 1 месяц')
         bot.send_message(callback.message.chat.id, 'Стоимость будет указана за 1 месяц.')
         bot.send_message(callback.message.chat.id,
-                         'Что-бы узнать стоимость за 2 или 3 месяца, необходимо просто умножить ' +
+                         'Что-бы узнать стоимость за 2 или 3 месяца, необходимо просто умножить ' 
                          'сумму на количество месяцев.')
         bot.send_message(callback.message.chat.id, f'<u><b>ВНИМАНИЕ!</b></u>', parse_mode='HTML')
         bot.send_message(callback.message.chat.id,
@@ -80,19 +61,19 @@ def callback_message(callback):
         bot.send_message(callback.message.chat.id, 'На какой вид транспорта Вы хотите оформить страховку?',
                          reply_markup=markup)
     elif callback.data == 'car':
-        bot.send_message(callback.message.chat.id, 'Стоимость полиса на легковой автомобиль 185,4 злотых по курсу'+
+        bot.send_message(callback.message.chat.id, 'Стоимость полиса на легковой автомобиль 185,4 злотых по курсу'
                          ' на день оплаты', reply_markup=markup_main)
 
     elif callback.data == 'moto':
-        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Мотоцикл 32,88 евро по курсу'+
+        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Мотоцикл 32,88 евро по курсу'
                          ' на день оплаты', reply_markup=markup_main)
 
     elif callback.data == 'bus':
-        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Автобус 257,83 евро по курсу'+
+        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Автобус 257,83 евро по курсу'
                          ' на день оплаты', reply_markup=markup_main)
 
     elif callback.data == 'trailer':
-        bot.send_message(callback.message.chat.id, 'Стоимость полиса на легковой Прицеп 36,05 евро по курсу'+
+        bot.send_message(callback.message.chat.id, 'Стоимость полиса на легковой Прицеп 36,05 евро по курсу'
                          ' на день оплаты', reply_markup=markup_main)
 
     elif callback.data == 'main_menu':
@@ -100,14 +81,14 @@ def callback_message(callback):
 
     elif callback.data == 'states':
         file_eu = open('./eu.png', 'rb')
-        bot.send_message(callback.message.chat.id, 'Действие полиса распространяется на все страны <b>Евросоюза</b>,'+
+        bot.send_message(callback.message.chat.id, 'Действие полиса распространяется на все страны <b>Евросоюза</b>,'
                          ' а так же на <b>Швейцарию</b>', parse_mode='HTML')
         bot.send_photo(callback.message.chat.id, file_eu)
         bot.send_message(callback.message.chat.id, 'Вот перечень стран, где действует полис:')
-        bot.send_message(callback.message.chat.id,'АВСТРИЯ, <i>БЕЛЬГИЯ</i>, БОЛГАРИЯ, <i>ВЕНГРИЯ</i>, ГРЕЦИЯ, '+
-                         '<i>ГЕРМАНИЯ</i>, ДАНИЯ, <i>ЭСТОНИЯ</i>, ИРЛАНДИЯ, <i>ИСЛАНДИЯ</i>, ИСПАНИЯ, <i>ИТАЛИЯ</i>,'+
-                         ' КИПР, <i>ЛИТВА</i>, ЛАТВИЯ, <i>ЛЮКСЕМБУРГ</i>, МАЛЬТА, <i>НИДЕРЛАНДЫ</i>, НОРВЕГИЯ,'+
-                         ' <i>ПОЛЬША</i>, ПОРТУГАЛИЯ, <i>РУМЫНИЯ</i>, СЛОВАКИЯ, <i>СЛОВЕНИЯ</i>, ФИНЛЯНДИЯ,'+
+        bot.send_message(callback.message.chat.id, 'АВСТРИЯ, <i>БЕЛЬГИЯ</i>, БОЛГАРИЯ, <i>ВЕНГРИЯ</i>, ГРЕЦИЯ, '
+                         '<i>ГЕРМАНИЯ</i>, ДАНИЯ, <i>ЭСТОНИЯ</i>, ИРЛАНДИЯ, <i>ИСЛАНДИЯ</i>, ИСПАНИЯ, <i>ИТАЛИЯ</i>,'
+                         ' КИПР, <i>ЛИТВА</i>, ЛАТВИЯ, <i>ЛЮКСЕМБУРГ</i>, МАЛЬТА, <i>НИДЕРЛАНДЫ</i>, НОРВЕГИЯ,'
+                         ' <i>ПОЛЬША</i>, ПОРТУГАЛИЯ, <i>РУМЫНИЯ</i>, СЛОВАКИЯ, <i>СЛОВЕНИЯ</i>, ФИНЛЯНДИЯ,'
                          ' <i>ЧЕШСКАЯ</i> РЕСПУБЛИКА, <i>ФРАНЦИЯ</i>, ХОРВАТИЯ, <b><i>ШВЕЙЦАРИЯ</i></b>, ШВЕЦИЯ',
                          parse_mode='HTML', reply_markup=markup_main)
     elif callback.data == 'border':
@@ -147,14 +128,6 @@ def callback_message(callback):
                          'российская карта, вам необходимо <b>открыть счет в Wise</b> и произвести перевод с Wise на '
                          'польский расчетный счет. \n С европейских платежных карт необходимо будет произвести '
                          '<b>перевод на польский расчетный счет</b>', parse_mode='HTML', reply_markup=markup_main)
-
-
-
-
-
-
-
-
 
 
 bot.polling(none_stop=True)
