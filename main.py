@@ -1,4 +1,5 @@
 import telebot
+import logging
 from telebot import types
 from telebot.types import WebAppInfo
 
@@ -130,4 +131,9 @@ def callback_message(callback):
                          '<b>перевод на польский расчетный счет</b>', parse_mode='HTML', reply_markup=markup_main)
 
 
-bot.polling(none_stop=True)
+if __name__ == '__main__':
+    while True:
+        try:
+            bot.polling(none_stop=True)
+        except Exception as ex:
+            logger.error(ex)
