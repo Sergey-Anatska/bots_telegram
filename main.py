@@ -83,7 +83,6 @@ def callback_message(callback):
     elif callback.data == 'states':
         bot.send_message(callback.message.chat.id, 'Действие полиса распространяется на все страны <b>Евросоюза</b>,'
                          ' а так же на <b>Швейцарию</b>', parse_mode='HTML')
-        bot.send_photo(callback.message.chat.id, file_eu)
         bot.send_message(callback.message.chat.id, 'Вот перечень стран, где действует полис:')
         bot.send_message(callback.message.chat.id, 'АВСТРИЯ, <i>БЕЛЬГИЯ</i>, БОЛГАРИЯ, <i>ВЕНГРИЯ</i>, ГРЕЦИЯ, '
                          '<i>ГЕРМАНИЯ</i>, ДАНИЯ, <i>ЭСТОНИЯ</i>, ИРЛАНДИЯ, <i>ИСЛАНДИЯ</i>, ИСПАНИЯ, <i>ИТАЛИЯ</i>,'
