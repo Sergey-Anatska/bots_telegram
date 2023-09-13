@@ -85,6 +85,12 @@ def callback_message(callback):
                          ' <i>ПОЛЬША</i>, ПОРТУГАЛИЯ, <i>РУМЫНИЯ</i>, СЛОВАКИЯ, <i>СЛОВЕНИЯ</i>, ФИНЛЯНДИЯ,'
                          ' <i>ЧЕШСКАЯ</i> РЕСПУБЛИКА, <i>ФРАНЦИЯ</i>, ХОРВАТИЯ, <b><i>ШВЕЙЦАРИЯ</i></b>, ШВЕЦИЯ',
                          parse_mode='HTML', reply_markup=markup_main)
+        bot.send_message(callback.message.chat.id,
+                         'Независимо от того, в какой стране приобретен указанный выше полис, он будет действовать'
+                         ' во всех странах.')
+        bot.send_message(callback.message.chat.id,
+                         'Например Вы приобрели польский полис, с ним Вы без проблем проедете через границу'
+                         ' Беларусь - Литва', reply_markup=markup_main)
     elif callback.data == 'border':
         bot.send_message(callback.message.chat.id,
                          'С 1 июня 2023 года прекращено сотрудничество между 31-ой европейской страной и странами'
@@ -112,7 +118,7 @@ def callback_message(callback):
     elif callback.data == 'pay_when':
         bot.send_message(callback.message.chat.id,
                          'После оформления заявки, она будет отправлена в страховую компанию на акцептацию.\n'
-                         ' Данный процесс может занять несколько рабочих дней.\n Только после того как страховая даст'
+                         ' Данный процесс может занять несколько часов.\n Только после того как страховая даст'
                          ' разрешение на продажу полиса, на вашу почту будет направлен счет на оплату',
                          parse_mode='HTML', reply_markup=markup_main)
     elif callback.data == 'pay_where':
