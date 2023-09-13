@@ -52,13 +52,12 @@ def callback_message(callback):
                          'сумму на количество месяцев.')
         bot.send_message(callback.message.chat.id, f'<u><b>ВНИМАНИЕ!</b></u>', parse_mode='HTML')
         bot.send_message(callback.message.chat.id,
-                         'При оформлении договора страхования сразу на год, получите <u><b>скидку до 40%</b></u>',
-                         parse_mode='HTML')
+                         'При оформлении договора страхования на легковой автомобиль сразу на год, получите <u><b>'
+                         'скидку до 48%</b></u>', parse_mode='HTML')
         markup = types.InlineKeyboardMarkup()
         markup.row(btn_pay_when, btn_pay_where)
         markup.row(btn_car)
         markup.row(btn_moto, btn_bus)
-        markup.row(btn_trailer)
         bot.send_message(callback.message.chat.id, 'На какой вид транспорта Вы хотите оформить страховку?',
                          reply_markup=markup)
     elif callback.data == 'car':
@@ -66,15 +65,11 @@ def callback_message(callback):
                          ' на день оплаты', reply_markup=markup_main)
 
     elif callback.data == 'moto':
-        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Мотоцикл 32,88 евро по курсу'
+        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Мотоцикл 65 евро по курсу'
                          ' на день оплаты', reply_markup=markup_main)
 
     elif callback.data == 'bus':
-        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Автобус 257,83 евро по курсу'
-                         ' на день оплаты', reply_markup=markup_main)
-
-    elif callback.data == 'trailer':
-        bot.send_message(callback.message.chat.id, 'Стоимость полиса на легковой Прицеп 36,05 евро по курсу'
+        bot.send_message(callback.message.chat.id, 'Стоимость полиса на Автобус 240 евро по курсу'
                          ' на день оплаты', reply_markup=markup_main)
 
     elif callback.data == 'main_menu':
