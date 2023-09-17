@@ -12,7 +12,7 @@ btn_border = types.InlineKeyboardButton('Как пересечь границу?
 btn_car = types.InlineKeyboardButton('Легковой автомобиль', callback_data='car')
 btn_moto = types.InlineKeyboardButton('Мотоцикл', callback_data='moto')
 btn_bus = types.InlineKeyboardButton('Автобус', callback_data='bus')
-btn_link = types.InlineKeyboardButton('Перейти на сайт',  web_app=WebAppInfo(url='https://greencard.agency/'))
+btn_link = types.InlineKeyboardButton('Перейти на сайт',  url='https://greencard.agency/')
 btn_crm_form = types.InlineKeyboardButton('ОФОРМИТЬ ПОЛИС',
                                           web_app=WebAppInfo(url='https://b24-u594l7.bitrix24.site/crm_form_f7oxx/'))
 btn_manager = types.InlineKeyboardButton('Соеденить с оператором', url='https://t.me/GreenCardAgency_bot')
@@ -29,8 +29,8 @@ def main(message):
     markup = types.InlineKeyboardMarkup()
     markup.row(btn_costs)
     markup.row(btn_states, btn_border)
+    markup.row(btn_what_is)
     markup.row(btn_crm_form, btn_link)
-    markup.row(btn_what_is, btn_link)
     bot.send_message(message.chat.id, 'Чем я могу помочь?',
                      reply_markup=markup)
 
