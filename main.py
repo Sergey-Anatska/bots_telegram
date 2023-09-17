@@ -30,6 +30,7 @@ def main(message):
     markup.row(btn_costs)
     markup.row(btn_states, btn_border)
     markup.row(btn_crm_form, btn_link)
+    markup.row(btn_what_is, btn_link)
     bot.send_message(message.chat.id, 'Чем я могу помочь?',
                      reply_markup=markup)
 
